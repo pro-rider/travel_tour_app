@@ -660,3 +660,50 @@ implementation 'com.facebook.android:facebook-android-sdk:latest.release'
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+
+
+git hub
+
+git init
+git config --global user.name
+git config --global user.email
+git add file name
+git commit -m "file name add"
+git log (show status)
+git push main origin
+git pull
+git add . (every file)
+git branch -M main
+git remote add origin url
+git checkout main copy uniqueid
+git chekout -b (create new brach)
+git checkout name
+git pull main origin
+git clone
+git switch
+
+// pull if extra commit is addded in git hub
+git pull main origin
+git status
+
+merge request
+// git checkout weather
+// git checkout -b weather
+// git add .
+// git commit -m " remove or add some features in weather app"
+// git push origin weather
+// git pull origin main
+// if already exist 
+git switch branh_name
+// if rebase issue we facing
+// git rebase --continue
+// git rebase --abort
+// git rebase --skip
+// git rebase --quit
+// git rebase --edit-todo
+// git rebase --show-current-patch
+
+git branch -d branch_name
+https://reqres.in/
+https://search.brave.com/search?q=firebase.google.ocm&source=desktop
+https://firebase.flutter.dev/docs/overview
