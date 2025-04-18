@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "579308487575",
+    "project_id": "tour-and-travel-app-2c410",
+    "storage_bucket": "tour-and-travel-app-2c410.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579308487575:android:5044953005c418491d3ad2",
+        "android_client_info": {
+          "package_name": "com.example.tour_travel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5HBtxGZj6zUsmVLa5T7YHmMkJcLYxMI8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

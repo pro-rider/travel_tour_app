@@ -1,0 +1,662 @@
+
+├── lib/
+│   ├── core/
+│   │   ├── constants/
+│   │   │   ├── colors.dart
+│   │   │   ├── images.dart
+│   │   │   └── strings.dart
+│   │   ├── env/
+│   │   │   └── env_config.dart
+│   │   ├── error/
+│   │   │   └── exceptions.dart
+│   │   ├── network/
+│   │   │   ├── api_client.dart
+│   │   │   ├── api_endpoints.dart
+│   │   │   └── network_interceptor.dart
+│   │   └── utils/
+│   │       └── validators.dart
+│   │
+│   ├── models/
+│   │   ├── user_model.dart
+│   │   ├── tour_model.dart
+│   │   └── statement_model.dart
+│   │
+│   ├── services/
+│   │   ├── auth_service.dart
+│   │   ├── tour_service.dart
+│   │   ├── statement_service.dart
+│   │   └── local_db_service.dart (using sqflite)
+│   │
+│   ├── features/
+│   │   ├── auth/
+│   │   │   ├── bloc/
+│   │   │   │   ├── auth_bloc.dart
+│   │   │   │   └── auth_state.dart
+│   │   │   ├── screens/
+│   │   │   │   ├── login_screen.dart
+│   │   │   │   ├── signup_screen.dart
+│   │   │   │   └── forgot_password_screen.dart
+│   │   │   └── widgets/
+│   │   │       └── auth_form.dart
+│   │   │
+│   │   ├── home/
+│   │   │   ├── screens/
+│   │   │   │   └── home_screen.dart
+│   │   │   └── widgets/
+│   │   │       └── featured_tours.dart
+│   │   │
+│   │   ├── tour/
+│   │   │   ├── screens/
+│   │   │   │   ├── tour_list_screen.dart
+│   │   │   │   └── tour_detail_screen.dart
+│   │   │   ├── widgets/
+│   │   │   │   └── tour_card.dart
+│   │   │   └── bloc/
+│   │   │       └── tour_bloc.dart
+│   │   │
+│   │   ├── statement/
+│   │   │   ├── screens/
+│   │   │   │   └── statement_screen.dart
+│   │   │   ├── widgets/
+│   │   │   │   └── statement_item.dart
+│   │   │   └── bloc/
+│   │   │       └── statement_bloc.dart
+│   │   │
+│   │   └── profile/
+│   │       ├── screens/
+│   │       │   └── profile_screen.dart
+│   │       └── widgets/
+│   │           └── profile_card.dart
+│
+│   ├── database/
+│   │   └── app_database.dart
+│
+│   ├── env.dart         <-- .env handler
+│   ├── main.dart
+│   └── routes/
+│       └── app_routes.dart
+│
+├── test/
+│   ├── unit/
+│   ├── widget/
+│   └── integration/
+│
+├── .env                 <-- Add your API keys, base URLs here
+
+
+
+for login screen
+Frontend Verification and Auth Process (Bullet Points)
+🔹 During Sign-Up
+ Validate email format (e.g., using RegExp).
+
+ Check password strength (min length, special characters, etc.).
+
+ Confirm password matches (Password == Confirm Password).
+
+ Optional: Confirm email matches (if using double-email input).
+
+ Show real-time validation messages or password strength meter.
+
+ Disable sign-up button until form is valid.
+
+ Show loading indicator when sending data to backend.
+
+ Send user data (email, password) to backend via HTTP POST request.
+
+ Handle backend responses (e.g., user exists, weak password).
+
+ Navigate to next screen (like login or dashboard) after success.
+
+🔹 During Login
+ Validate email and password are not empty.
+
+ Show loading indicator while waiting for response.
+
+ Send login credentials to backend via HTTP POST.
+
+ Handle response:
+
+ If correct → get and save auth token.
+
+ If incorrect → show error (wrong email/password).
+
+ Navigate to home/dashboard on successful login.
+
+🔹 After Login (Session Handling)
+ Store received token securely using flutter_secure_storage.
+
+ Check token on app launch to skip login screen (auto-login).
+
+ Provide logout button:
+
+ On logout, delete token from secure storage.
+
+ Navigate back to login screen.
+
+🔹 Other Helpful Features (Optional but Good UX)
+ Implement password visibility toggle (eye icon).
+
+ Show/hide progress indicator when loading.
+
+ Implement retry logic if network fails.
+
+ Add biometric login with local_auth.
+
+ Support OTP or email verification flow.
+
+ Add Captcha/reCaptcha for bot protection (e.g., if using Firebase).
+
+🔐 Security Reminders
+ Never store raw passwords in frontend or local storage.
+
+ Never compare passwords on frontend — always delegate to backend.
+
+ Always validate inputs on the backend too (frontend validation is not enough).
+
+
+
+
+ for whole app flow in ui
+ 1. Onboarding and User Engagement
+Welcome Screen – Eye-catching introduction to the app.
+
+Onboarding Flow with Introductory Animations – Interactive onboarding to familiarize users with app features.
+
+Sign Up/Login Screen – Email, Social Media, and Google Sign-In options.
+
+Guest Login Screen – For users who don’t want to create an account immediately.
+
+Account Recovery Screen – Secure password reset via email or SMS.
+
+Two-Factor Authentication (2FA) Screen – Added security during sign-in.
+
+App Tour/Feature Walkthrough – A walkthrough to guide users through app features.
+
+Location Access Request – Request permission to access the user’s location.
+
+Language & Currency Selection – Customize for international users.
+
+Welcome Back Screen – Personalized greeting after sign-in.
+
+Subscription Screen – Option for paid plans, memberships, or VIP access.
+
+2. Home and Navigation
+Home Screen – Personalized with banners, popular packages, and recommendations.
+
+Search Functionality – Enhanced search with filter options (location, price, rating).
+
+Popular Destinations Carousel – Showcase trending destinations or top-rated locations.
+
+Explore Destinations by Region – Explore destinations based on regions (e.g., Europe, Asia).
+
+Trending Tours Section – Highlight trending or seasonal tours.
+
+Deal of the Day Section – Daily offers for users.
+
+Destination of the Week Section – Featured destination with in-depth details.
+
+Quick Booking Button – For users looking for a simple, fast booking process.
+
+Filter Options – Price range, date, ratings, destination type (family, adventure, luxury).
+
+Bottom Navigation Bar – Easy access to Home, Search, Bookings, Profile, Notifications.
+
+Dynamic Bottom Sheet – Show deals or highlights in a sliding sheet.
+
+3. Tour and Package Information
+Tour Package Details Screen – Complete overview of the tour.
+
+Itinerary Breakdown Screen – Detailed day-by-day itinerary for the trip.
+
+Tour Inclusions/Exclusions – Clearly state what is and isn't included in the price.
+
+Customer Reviews & Ratings – Display user feedback on the tour package.
+
+Price Breakdown Screen – Show a detailed breakdown of the cost (transport, accommodation, etc.).
+
+Cancellation Policy Screen – Transparent cancellation rules and deadlines.
+
+Tour Packages with Custom Filters – Filter options like family, solo, adventure, etc.
+
+Discount Offers for Tour Packages – Show current discounts available.
+
+Group Booking Discounts – Special pricing for booking multiple packages or group tours.
+
+Seasonal/Last-Minute Deals – Highlight time-sensitive offers.
+
+Tour Customization Screen – Customize the tour (e.g., add extra services).
+
+Seasonality of Tours – Show availability of tours based on the time of the year.
+
+Photo Gallery for Each Tour – High-quality images from past tours.
+
+Video Tour of the Package – Allow users to view promotional or past tour videos.
+
+4. Booking & Payment Flow
+Booking Screen – Allow users to select tour dates, number of guests, etc.
+
+Booking Confirmation Screen – Confirmation of details before finalizing.
+
+Payment Gateway Integration – Integrate secure payment systems (PayPal, Stripe, credit card).
+
+Promo Code / Coupon Code Screen – Redeem promo codes during the payment process.
+
+Payment Success Screen – Confirmation of successful payment.
+
+Booking History Screen – Track all past bookings.
+
+Order Summary & Invoice Screen – Detailed breakdown and downloadable invoice.
+
+Booking Review Screen – Ability to leave feedback and rate the tour.
+
+Payment Failure/Error Screen – Handle payment failures with user-friendly prompts.
+
+5. User Profile and Settings
+Profile Dashboard – Show user’s details, past bookings, and preferences.
+
+Edit Profile Screen – Update name, email, and personal information.
+
+Add Payment Method – Option to add or update payment details.
+
+Address Book Screen – Manage delivery and billing addresses.
+
+Loyalty Program Screen – Points, rewards, and VIP offers for frequent users.
+
+Preferences Screen – Set preferences for tour types, notifications, etc.
+
+Settings Screen – Account settings, notification preferences, etc.
+
+Saved Tours / Wishlist Screen – Users can save tours they’re interested in.
+
+Booking Notifications Screen – Alerts for upcoming tours, deals, or changes.
+
+Activity Log – Show user activity and history on the app.
+
+Logout Confirmation Screen – Confirm logout action.
+
+6. Customer Support & Engagement
+Live Chat Support Screen – In-app chat with real-time support agents.
+
+Help Center Screen – Access common FAQs and troubleshooting tips.
+
+Phone Support Option – Call customer support directly from the app.
+
+Ticketing System Screen – For issues requiring ticket creation.
+
+Community Forum Screen – Community-driven discussions and travel tips.
+
+Tour Guide Chat Screen – Communicate with a live tour guide for real-time questions.
+
+Emergency Contact Information Screen – Important travel safety contacts.
+
+Rating and Review System – Allow users to review destinations, tours, and guides.
+
+7. Notifications and Alerts
+Push Notifications for Deals – Alert users about exclusive promotions.
+
+Booking Reminders – Remind users about upcoming tours and payments.
+
+Promo Notifications – Notify users of limited-time offers.
+
+Payment Due Reminders – Remind users to complete their bookings.
+
+Last-Minute Deals – Notify users of last-minute offers and availability.
+
+Personalized Notifications – Based on user preferences (e.g., price drops).
+
+Tour Confirmation Alerts – Confirmation of booked tours.
+
+User Reviews Alert – Notify users of new reviews for their favorite tours.
+
+8. Advanced Tour and Destination Features
+Destination Map View – Explore tours via an interactive map.
+
+Nearby Attraction Discovery – Discover local attractions, museums, etc.
+
+Weather Information for Destinations – Show the current weather at the destination.
+
+Travel Safety Tips for Destinations – Provide important travel advisories.
+
+Travel Restrictions Information – Show information on visa, COVID rules, etc.
+
+Local Experiences – Showcase local experiences, such as food tours or cultural activities.
+
+Flight and Hotel Integration – Book flights and accommodations through the app.
+
+Local Transportation Options – Show transportation options (e.g., taxis, buses).
+
+9. Travel Insurance & Add-Ons
+Travel Insurance Screen – Offer users an option to purchase insurance for their trip.
+
+Add-On Services Screen – Book optional add-ons such as airport transfers or spa services.
+
+Special Assistance Requests – For users who need additional help, like wheelchair access.
+
+Emergency Services Information – Show emergency contact numbers for each location.
+
+10. Admin Dashboard (For Providers)
+Admin Panel Dashboard – Overview of all bookings, payments, and tour stats.
+
+Tour Package Management – Admin can add, edit, or delete tour packages.
+
+Review Approval System – Manage and moderate user reviews.
+
+Payment Processing Screen – Handle payment status and refunds.
+
+User Management System – Admin can view user profiles and block or report users.
+
+Booking History for Admin – View detailed booking history.
+
+Activity Scheduling & Coordination – Schedule and update available activities.
+
+Feedback and Reports Dashboard – Analyze user feedback and app usage.
+
+11. Marketing and Analytics
+Referral Program – Let users invite friends and earn rewards.
+
+Social Media Sharing – Integrate sharing features for users to post tours to social media.
+
+Push Notification Management – Admin can send targeted push notifications to users.
+
+Custom Analytics Dashboard – Track user behavior, conversions, and other metrics.
+
+A/B Testing Features – Test different versions of the app to optimize user experience.
+
+Heatmap Analytics – Understand where users are clicking and interacting the most.
+
+User Feedback & Polls – Collect valuable insights from users.
+
+Customer Segmentation – Segment users for personalized marketing campaigns.
+
+Additional Robust Features
+Augmented Reality (AR) View of Destinations – Use AR to give users a virtual tour of destinations.
+
+Offline Access – Provide offline access to certain travel info and itineraries.
+
+Weather Updates for Tour Dates – Notify users of expected weather during their trip.
+
+Video Call with a Travel Agent – Allow users to video chat with a travel expert.
+
+AI Chatbot – Provide 24/7 AI-based customer support.
+
+
+
+
+usages of reusable dialog box
+ReusableDialog.show(
+  context,
+  title: 'Confirmation',
+  message: 'Do you want to proceed?',
+  positiveButtonText: 'Yes',
+  negativeButtonText: 'No',
+  onPositiveButtonPressed: () {
+    print('Proceeding...');
+  },
+  onNegativeButtonPressed: () {
+    print('Canceled');
+  },
+);
+
+usages for loader
+LoaderWidget(isLoading: true); // Display loader
+LoaderWidget(isLoading: false); // Hide loader
+
+
+usages for date time reusable widget
+DateTime now = DateTime.now();
+print(now.toFormattedString()); // Prints the formatted date-time
+print(now.addDays(5)); // Add 5 days
+print(now.subtractDays(3)); // Subtract 3 days
+
+usages for build ccontext extension
+Container(
+  padding: context.scaledPadding(16), // Scaled padding based on screen size
+  margin: EdgeInsets.all(context.scaledMargin(8)), // Scaled margin based on screen size
+  child: Text(
+    'Responsive Text',
+    style: TextStyle(fontSize: context.scaledFontSize(16)),
+  ),
+);
+
+SmartResponsive(
+  phone: PhoneLayout(),         // Widget for small screen phones
+  foldable: FoldableLayout(),   // Widget for foldable devices
+  tablet: TabletLayout(),       // Widget for tablets
+  ultrawide: UltrawideLayout(), // Widget for ultrawide screens
+);
+
+
+usages for snakes bar
+AppSnackbar.show(context, "Booking Successful", color: Colors.green);
+
+
+usages for custom button
+
+CustomButton(
+  label: "Submit",
+  onPressed: () {
+    // Your action
+  },
+)
+
+
+
+usages for text field
+CustomTextField(
+  controller: _controller,
+  label: "Email",
+  validator: (value) => value!.isEmpty ? "Please enter email" : null,
+)
+
+
+
+making git untrackable our project list
+git rm --cached .env
+git commit -m "Stop tracking .env file"
+
+
+
+reusable widgets 
+        └── widgets/
+            ├── settings_tile.dart
+            ├── toggle_tile.dart
+            ├── theme_toggle.dart
+            └── language_dropdown.dart
+
+
+
+1.
+
+class SettingsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text("Settings")),
+      body: ListView(
+        children: [
+          const SizedBox(height: 10),
+          SettingsTile(
+            title: 'Account',
+            icon: Icons.person,
+            onTap: () {}, // Navigate to account screen
+          ),
+          SettingsTile(
+            title: 'Privacy',
+            icon: Icons.lock,
+            onTap: () {},
+          ),
+          ThemeToggleTile(
+            isDarkMode: true,
+            onToggle: (val) {},
+          ),
+          SettingsToggleTile(
+            title: 'Enable Notifications',
+            value: true,
+            onChanged: (val) {},
+          ),
+          LanguageDropdown(
+            selectedLang: 'English',
+            languages: ['English', 'Nepali'],
+            onChanged: (lang) {},
+          ),
+          SettingsTile(
+            title: 'About',
+            icon: Icons.info_outline,
+            onTap: () {},
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+2.
+
+class SettingsTile extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final VoidCallback onTap;
+
+  const SettingsTile({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+      onTap: onTap,
+    );
+  }
+}
+
+
+3.
+
+class LanguageDropdown extends StatelessWidget {
+  final String selectedLang;
+  final List<String> languages;
+  final ValueChanged<String?> onChanged;
+
+  const LanguageDropdown({
+    super.key,
+    required this.selectedLang,
+    required this.languages,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: selectedLang,
+      onChanged: onChanged,
+      items: languages.map((lang) {
+        return DropdownMenuItem<String>(
+          value: lang,
+          child: Text(lang),
+        );
+      }).toList(),
+    );
+  }
+}
+
+
+4.
+
+class ThemeToggleTile extends StatelessWidget {
+  final bool isDarkMode;
+  final ValueChanged<bool> onToggle;
+
+  const ThemeToggleTile({
+    super.key,
+    required this.isDarkMode,
+    required this.onToggle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SwitchListTile(
+      title: Text("Dark Mode"),
+      value: isDarkMode,
+      onChanged: onToggle,
+    );
+  }
+}
+
+
+5.
+
+class SettingsToggleTile extends StatelessWidget {
+  final String title;
+  final bool value;
+  final ValueChanged<bool> onChanged;
+
+  const SettingsToggleTile({
+    super.key,
+    required this.title,
+    required this.value,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SwitchListTile(
+      title: Text(title),
+      value: value,
+      onChanged: onChanged,
+    );
+  }
+}
+
+usages of toogle
+
+SettingsToggleTile(
+  title: 'Enable Notifications',
+  value: notificationsEnabled,
+  onChanged: (val) => setState(() => notificationsEnabled = val),
+)
+
+
+
+Toggle Use Case	Meaning
+Dark Mode Toggle	Switch between light and dark theme
+Notification Toggle	Enable or disable push/email notifications
+Location Toggle	Allow or disallow location access
+App Sounds Toggle	Mute or enable app sounds
+Auto-Update Toggle	Enable auto-update feature
+Face ID / Fingerprint Toggle	Allow biometric login or not
+
+
+
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>fb123456789012345</string>
+        </array>
+    </dict>
+</array>
+<key>FacebookAppID</key>
+<string>123456789012345</string>
+<key>FacebookDisplayName</key>
+<string>Tour Travel</string>
+
+
+facebook authentication
+https://tour-and-travel-app-2c410.firebaseapp.com/__/auth/handler
+
+mavenCentral() 
+
+
+implementation 'com.facebook.android:facebook-android-sdk:latest.release'
+
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;

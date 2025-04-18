@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">travel_tour_app</string>
+    <string name="facebook_app_id">706065221942344</string>
+    <string name="fb_login_protocol_scheme">fb706065221942344</string>
+    <string name="facebook_client_token">3e6b9563d42293ec2fddc80948710605</string>
+    
+    
+</resources>
