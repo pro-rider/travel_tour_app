@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:tour_travel/loginpage/loginsignup/constants/constants.dart';
 import 'package:tour_travel/loginpage/loginsignup/screens/home_screen.dart';
 import 'package:tour_travel/loginpage/loginsignup/screens/login_screen.dart';
@@ -67,37 +68,45 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: height / 2.8,
-                child: Image.asset('assets/images/signup.jpg'),
+                height: height / 2.9,
+                child: Image.asset('assets/image/login/signup.jpeg'),
               ),
-              const SizedBox(height: 16),
+              Gap(12),
               TextFieldInput(
                 icon: Icons.person,
                 textEditingController: nameController,
                 hintText: 'Enter your name',
                 textInputType: TextInputType.name,
               ),
-              const SizedBox(height: 12),
+              Gap(10),
               TextFieldInput(
                 icon: Icons.email,
                 textEditingController: emailController,
                 hintText: 'Enter your email',
                 textInputType: TextInputType.emailAddress,
               ),
-              const SizedBox(height: 12),
+              Gap(10),
               TextFieldInput(
                 icon: Icons.lock,
                 textEditingController: passwordController,
-                hintText: 'Enter your password',
+                hintText: 'New Password',
                 textInputType: TextInputType.visiblePassword,
                 isPass: true,
               ),
-              const SizedBox(height: 16),
+              Gap(10),
+              TextFieldInput(
+                icon: Icons.lock,
+                textEditingController: passwordController,
+                hintText: 'Confirm Password',
+                textInputType: TextInputType.visiblePassword,
+                isPass: true,
+              ),
+              Gap(12),
               isLoading
                   ? const CircularProgressIndicator()
                   : MyButtons(onTap: signupUser, text: "Sign Up"),
@@ -119,7 +128,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              Gap(15),
             ],
           ),
         ),

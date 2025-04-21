@@ -27,7 +27,7 @@ class _PhoneAuthenticationState extends State<PhoneAuthentication> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
             content: Text(
-                'Please enter a valid phone number (e.g., +9771234567890)')),
+                'Please enter a valid phone number (e.g., 9823036600)')),
       );
       return;
     }
@@ -85,7 +85,7 @@ class _PhoneAuthenticationState extends State<PhoneAuthentication> {
                 controller: phoneController,
                 keyboardType: TextInputType.phone,
                 decoration: InputDecoration(
-                  hintText: "+9771234567890",
+                  hintText: "+9779823036600",
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),

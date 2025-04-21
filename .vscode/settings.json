@@ -1,5 +1,3 @@
 {
-    "cSpell.words": [
-        "buildscripts"
-    ]
+    "C_Cpp.errorSquiggles": "disabled"
 }

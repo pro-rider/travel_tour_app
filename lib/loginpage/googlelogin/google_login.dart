@@ -36,17 +36,20 @@ class _GoogleLoginState extends State<GoogleLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? const CircularProgressIndicator()
-        : MyButtons(
-            onTap: signInWithGoogle,
-            text: "Sign in with Google",
-            leading: Image.asset(
-              'assets/images/google.png',
-              height: 24,
-              width: 24,
-            ),
-            backgroundColor: AppColors.googleButtonColor,
-          );
+    return SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+            child: isLoading
+                ? const CircularProgressIndicator()
+                : MyButtons(
+                    onTap: signInWithGoogle,
+                    text: "Sign in with Google",
+                    leading: Image.asset(
+                      'assets/image/login/google.png',
+                      height: 20,
+                      width: 20,
+                    ),
+                    backgroundColor: AppColors.googleButtonColor,
+                  )));
   }
 }

@@ -2,8 +2,6 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
-    id("com.google.firebase.crashlytics")
-    id("com.google.firebase.firebase-perf")
 }
 
 android {
@@ -21,25 +19,19 @@ android {
 
     defaultConfig {
         applicationId = "com.example.tour_travel"
-        minSdk = 21
+        minSdk = 23  // Updated from 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
     }
 
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            signingConfig = signingConfigs.getByName("debug") // Update for production
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+        release {
+            minifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
-        getByName("debug") {
-            isMinifyEnabled = false
-            isShrinkResources = false
+        debug {
+            minifyEnabled = false
         }
     }
 }
@@ -53,9 +45,8 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
-    implementation("com.google.firebase:firebase-crashlytics")
-    implementation("com.google.firebase:firebase-perf")
     implementation("com.facebook.android:facebook-login:17.0.1")
+    // implementation 'com.facebook.android:facebook-android-sdk:latest.release'
     implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.24")
-    implementation 'com.facebook.android:facebook-android-sdk:latest.release'
+    // implementation("com.google.android.gms:play-services-auth:21.3.0")   
 }

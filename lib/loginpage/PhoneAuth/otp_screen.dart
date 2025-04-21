@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:tour_travel/loginpage/loginsignup/constants/constants.dart';
 import 'package:tour_travel/loginpage/loginsignup/screens/home_screen.dart';
 import 'package:tour_travel/loginpage/loginsignup/widgets/button_widgets.dart';
@@ -71,11 +72,14 @@ class _OTPScreenState extends State<OTPScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              Image.asset("assets/images/otpimage.jpg", height: 250),
-              const SizedBox(height: 24),
+              Image.asset(
+                "assets/image/login/otpimage.jpg",
+                height: 250,
+              ),
+              Gap(24),
               const Text(
                 "OTP Verification",
                 style: TextStyle(
@@ -84,7 +88,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   color: AppColors.textColor,
                 ),
               ),
-              const SizedBox(height: 10),
+              Gap(10),
               const Text(
                 "Enter the OTP sent to your phone to continue.",
                 textAlign: TextAlign.center,
@@ -93,7 +97,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   color: AppColors.textColor,
                 ),
               ),
-              const SizedBox(height: 30),
+              Gap(30),
               TextField(
                 controller: otpController,
                 keyboardType: TextInputType.number,
@@ -105,7 +109,7 @@ class _OTPScreenState extends State<OTPScreen> {
                   prefixIcon: const Icon(Icons.lock),
                 ),
               ),
-              const SizedBox(height: 30),
+              Gap(30),
               isLoading
                   ? const CircularProgressIndicator()
                   : MyButtons(

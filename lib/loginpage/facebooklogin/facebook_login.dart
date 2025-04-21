@@ -42,9 +42,9 @@ class _FacebookLoginState extends State<FacebookLogin> {
             onTap: signInWithFacebook,
             text: "Sign in with Facebook",
             leading: Image.asset(
-              'assets/images/facebook.png',
-              height: 24,
-              width: 24,
+              'assets/image/login/facebook.jpeg',
+              height: 20,
+              width: 20,
             ),
             backgroundColor: AppColors.facebookButtonColor,
           );

@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:tour_travel/loginpage/PhoneAuth/phone_authentication.dart';
 import 'package:tour_travel/loginpage/facebooklogin/facebook_login.dart';
 import 'package:tour_travel/loginpage/forget_password/forget_password_screen.dart';
@@ -69,22 +69,22 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: height / 2.7,
-                child: Image.asset('assets/images/login.jpg'),
+                height: height / 2.9,
+                child: Image.asset('assets/image/login/undraw_secure-login_m11a.png'),
               ),
-              const SizedBox(height: 16),
+              Gap(2),
               TextFieldInput(
                 icon: Icons.person,
                 textEditingController: emailController,
                 hintText: 'Enter your email',
                 textInputType: TextInputType.emailAddress,
               ),
-              const SizedBox(height: 12),
+              Gap(5),
               TextFieldInput(
                 icon: Icons.lock,
                 textEditingController: passwordController,
@@ -92,13 +92,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 textInputType: TextInputType.visiblePassword,
                 isPass: true,
               ),
-              const SizedBox(height: 12),
+              Gap(5),
               const ForgetPasswordScreen(),
-              const SizedBox(height: 16),
+              Gap(5),
               isLoading
                   ? const CircularProgressIndicator()
                   : MyButtons(onTap: loginUser, text: "Log In"),
-              const SizedBox(height: 16),
+              Gap(5),
               Row(
                 children: [
                   const Expanded(child: Divider(thickness: 1)),
@@ -109,13 +109,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Expanded(child: Divider(thickness: 1)),
                 ],
               ),
-              const SizedBox(height: 16),
+              Gap(0.1),
               const GoogleLogin(),
-              const SizedBox(height: 12),
+              Gap(0.1),
               const FacebookLogin(),
-              const SizedBox(height: 12),
+              Gap(5),
               const PhoneAuthentication(),
-              const SizedBox(height: 16),
+              Gap(5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -133,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              Gap(15),
             ],
           ),
         ),

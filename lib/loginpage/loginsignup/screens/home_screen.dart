@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tour_travel/loginpage/googlelogin/google_auth.dart';
 import 'package:tour_travel/loginpage/loginsignup/constants/constants.dart';
 import 'package:tour_travel/loginpage/loginsignup/screens/login_screen.dart';
 import 'package:tour_travel/loginpage/loginsignup/services/authentication_services.dart';

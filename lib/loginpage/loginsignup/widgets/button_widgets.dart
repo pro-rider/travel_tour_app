@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class MyButtons extends StatelessWidget {
   final VoidCallback? onTap;
@@ -21,16 +22,16 @@ class MyButtons extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 25,
-          vertical: 10,
+          vertical: 8,
         ),
         child: Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.symmetric(
-            vertical: 14,
+            vertical: 8,
           ),
           decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(15),
             ),
             color: backgroundColor ?? Colors.blue,
           ),
@@ -40,12 +41,12 @@ class MyButtons extends StatelessWidget {
             children: [
               if (leading != null) ...[
                 leading!,
-                const SizedBox(width: 8),
+                Gap(8),
               ],
               Text(
                 text ?? "Button",
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 15,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),

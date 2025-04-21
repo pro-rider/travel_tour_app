@@ -707,3 +707,23 @@ git branch -d branch_name
 https://reqres.in/
 https://search.brave.com/search?q=firebase.google.ocm&source=desktop
 https://firebase.flutter.dev/docs/overview
+
+
+
+ CN=surendra, OU=unix, O=unixinfosys, L=kathmandu, ST=bagmati, C=NP correct?
+  [no]: 
+
+
+   Recommended Flutter Plugins
+flutter_svg: to render .svg illustrations
+
+lottie: to render animated .json files from LottieFiles
+
+
+payment integration in flutter
+
+https://medium.com/go-with-flutter/esewa-integration-in-flutter-16408a6dfb58
+
+https://pub.dev/packages/esewa_flutter
+
+https://github.com/hlgkb/flutter_esewa_integration
